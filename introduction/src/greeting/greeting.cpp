@@ -9,7 +9,8 @@ std::string create_efficient_greeting(std::string name)
   // similar construct exists for other types, e.g. vectors
   // It's called a `fill constructor`
   const std::string horizontal_frame(greeting.length(), '*');
-  std::string vertical_frame(greeting.length() - 2, ' ');
+  // just another way of creating strings with the 'string' function
+  std::string vertical_frame = std::string(greeting.length() - 2, ' ');
   vertical_frame = "*" + vertical_frame + "*";
   return horizontal_frame + "\n" + vertical_frame + "\n" + greeting + "\n" + vertical_frame + "\n" + horizontal_frame;
 }
