@@ -4,7 +4,7 @@ build: main
 
 # linking object files into final executable
 main: median.o student_info.o main.o
-	g++ median.o student_info.o main.o -o grading
+	g++ median.o student_info.o main.o -o grading.out
 
 #
 # Object Files
@@ -20,4 +20,4 @@ main.o:
 
 # remove built file
 clean:
-	rm grading
+	rm grading.out
