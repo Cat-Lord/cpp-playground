@@ -89,6 +89,23 @@ int main()
   }
   std::cout << '\n';
 
-  std::cout << "Quick, safe, elegant!" << std::endl;
+  std::cout << "Quick, safe, elegant!\n";
+  std::cout << "Last thing we'll discuss is delete operation. Whilst in array a deletion is not really possible (";
+  std::cout << "because the space for items is already allocated), in vectors we can remove items. This is, ";
+  std::cout << "arguably, so inefficient for larger amount of items, that it's best to avoid it completely.";
+  std::cout << "Let's try deleting some elements and look at addresses again.";
+  std::cout << "This is the array again before deletion:\n";
+  print_vector(int_vec);
+
+  std::vector<int>::const_iterator int_vec_iter = int_vec.cbegin();
+  std::advance(int_vec_iter, 2);
+  int_vec.erase(int_vec_iter);
+  print_vector(int_vec);
+  std::cout << "Carefully observing the output, we notice that all the items shifted their address based on the location of the deleted element.";
+  std::cout << "This is highly inefficient, because the contents need to be copied. A more efficient solution might be to use (linked) lists.";
+  std::cout << "We have to consider the use case, because lists don't have a quick random access but have fast deletion.";
+
+  std::cout << std::endl;
+
   return 0;
 }
