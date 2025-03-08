@@ -13,6 +13,11 @@ struct Cat
   int cuteness;
 };
 
+bool compare_cats(Cat &a, Cat &b)
+{
+  return a.cuteness < b.cuteness;
+}
+
 // Define the range for the random numbers
 int random_int()
 {
@@ -48,7 +53,10 @@ int main()
   cat_list.push_back({"Kocicanda", random_int()});
   cat_list.push_back({"Snowie", random_int()});
 
-  std::cout << "Now that we have the items in the list, let's try and iterate over that list and remove every item thats more than 10.\n";
+  // std::sort is not supported due to list's not having random access like in vectors, specifically vector[i]
+  cat_list.sort(compare_cats);
+  std::cout
+      << "Now that we have the items in the list, let's try and iterate over that list and remove every item thats more than 10.\n";
 
   print_list(cat_list);
 
@@ -59,7 +67,7 @@ int main()
     if (list_iter->name == "Kocicanda")
     {
       std::cout << "...erasing cat " << list_iter->name << '\n';
-      // receive an updated iterator
+      // careful: erasing invalidates all iterators! here we must receive an iterator that points to the next element
       list_iter = cat_list.erase(list_iter);
     }
     else
